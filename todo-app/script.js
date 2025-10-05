@@ -42,7 +42,7 @@ function showTask() {
         const divListElement = document.createElement("div");
         divListElement.classList.add("list-element");
         divListElement.innerHTML = `
-            <h3 class="task-text">${index + 1}. ${value}</h3>
+            <h3 class="task-text ${value.completed ? "marked" : ""}">${index + 1}. ${value.text}</h3>
             <div class="edit-delete-list">
                 <i class="fa-solid fa-pen-to-square icon-edit"></i>
                 <i class="fa-solid fa-trash icon-delete"></i>
@@ -55,7 +55,15 @@ function showTask() {
         //strikethrough text when clicked
         const taskText =  divListElement.querySelector(".task-text");
         taskText.addEventListener("click", function() {
+
+            //// do nothing if this task is being edited
+            if(divListElement.classList.contains("editing")) return;
+
+            value.completed = !value.completed; 
             taskText.classList.toggle("marked");
+            saveTask();
+            
+            
         });
 
         //delete logic
@@ -69,19 +77,21 @@ function showTask() {
         //edit logic
         const editBtn = divListElement.querySelector(".icon-edit");
         editBtn.addEventListener("click", function() {
+
+            if(value.completed) return;
             
             // if this task is already being edited → cancel
             if(divListElement.classList.contains("editing")){
                 divListElement.classList.remove("editing");
                 editIndex = null;
-                inputText.value = ""; // optional: clear input
+                inputText.value = "";
             } else {
                 // remove editing from all tasks first
-                document.querySelectorAll(".list-element").forEach(el => el.classList.remove("editing"));
+                document.querySelectorAll(".list-element").forEach(e => e.classList.remove("editing"));
 
                 // then activate current task
                 divListElement.classList.add("editing");
-                inputText.value = value;
+                inputText.value = value.text;
                 editIndex = index;
             }
         });
@@ -128,10 +138,10 @@ function showTask() {
             
             //2. push the text in array or edit
             if(editIndex !== null){
-                tasks[editIndex] = inputValue;
+                tasks[editIndex].text = inputValue;
                 editIndex = null;
             }else {
-                tasks.push(inputValue);
+                tasks.push({ text: inputValue, completed: false });
             };
 
             saveTask();
