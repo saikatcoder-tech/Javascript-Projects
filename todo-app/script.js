@@ -100,12 +100,13 @@ function showTask() {
                 listContainer.classList.add("active");
                 deleteAllBtn.style.display = "block"; 
             }
-
-            deleteAllBtn.addEventListener("click", function(){
-                tasks = [];
-                saveTask();
-                showTask();
-            })
+        
+        //delete all button  logic to delete all tasks
+        deleteAllBtn.addEventListener("click", function(){
+            tasks = [];
+            saveTask();
+            showTask();
+        })
 
 }
 
