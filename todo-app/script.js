@@ -60,7 +60,10 @@ function showTask() {
             if(divListElement.classList.contains("editing")) return;
 
             value.completed = !value.completed; 
-            taskText.classList.toggle("marked");
+
+            // taskText.classList.toggle("marked"); show the changes instantly
+            showTask();
+
             saveTask();
             
             
