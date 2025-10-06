@@ -1,0 +1,24 @@
+ // increment or decrement of cart item p-1
+
+ cartBox.querySelector(".cart-quantity").addEventListener("click", event => {
+    const incrementButtonn = cartBox.querySelector(".increment");
+    const decrementButton = cartBox.querySelector("#decrement");
+
+    const numberElement = cartBox.querySelector(".number");
+    let quantity = numberElement.textContent;
+
+    if(event.target.id === "decrement" && quantity > 1) {
+        quantity--;
+
+        if(quantity === 1){
+            decrementButton.style.color = "#999";
+        }
+    }
+
+    else if (event.target.id === "increment") {
+        quantity++;
+        decrementButton.style.color = "#333";
+    }
+
+    numberElement.textContent = quantity;
+ });
