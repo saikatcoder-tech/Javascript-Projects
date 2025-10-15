@@ -1,0 +1,148 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+body{
+    background: linear-gradient(135deg, #0a0a0a, #3c0050, #ff00cc);
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator{
+    background: rgba(20, 0, 40, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 0, 204, 0.4);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 0, 204, 0.3);
+
+    padding: 2rem;
+}
+
+.display{
+    background: rgba(0, 0, 0, 0.547);
+    color: #00FFFF; 
+    padding: 1.9rem 1.2rem;
+    
+    font-size: 2rem;
+    text-align: right;
+
+    border: 1.5px solid rgba(255, 0, 204, 0.4);
+    border-radius: 10px;
+
+    /* Neon glow effect */
+    text-shadow: 0 0 5px #00FFFF,
+               0 0 10px #00FFFF,
+               0 0 20px #00FFFF,
+               0 0 40px #00FFFF;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: .8rem;
+    margin-top: 1rem;
+}
+
+button{
+    background: linear-gradient(145deg, #1a0033, #3c0050);
+    padding: 1rem 1.5rem;
+
+    border: 1.5px solid rgba(255, 0, 204, 0.4);
+    border-radius: 10px;
+
+    color: white;
+    font-size: 1.5rem;
+
+    /* Neon glow effect */
+    text-shadow: 0 0 5px #858585,
+                0 0 10px #000000,
+                0 0 10px #fefefe;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover{
+    box-shadow: 0 0 20px rgba(255, 0, 204, 0.7);
+    
+    transform: translateY(-3px);
+    
+}
+
+.btn-control{
+    background: linear-gradient(135deg, #2b002b, #8a0088a5, #ff0bc283);
+
+    text-shadow: 0 0 5px #ff00ff,
+                0 0 10px #ffffffb9,
+                0 0 0px #fefefe76;
+}
+
+.btn-operator{
+    background: linear-gradient(135deg, #1a0033, #6a00a3, #ff00cc);
+}
+
+.btn-equal{
+    background: linear-gradient(135deg, #39006f, #7200a3, #00b7ff75);
+}
+
+.btn-control:hover, .btn-operator:hover, .btn-equal:hover{
+    background: linear-gradient(145deg, #1a0033, #3c0050);
+    color: #ff29d8ef;
+    box-shadow: 0 0 20px rgb(200, 0, 255);
+}
+
+.btn-zero{
+    grid-column: span 2;
+}
+
+@media (max-width: 450px) {
+    .calculator {
+        padding: 1.5rem;
+        width: 90vw;   /* fit almost full screen */
+    }
+
+    .display {
+        font-size: 1.5rem;
+        padding: 1.2rem;
+    }
+
+    button {
+        font-size: 1.2rem;
+        padding: 0.8rem;
+    }
+
+    .buttons {
+        grid-gap: 0.5rem;
+    }
+}
+
+@media (max-width: 300px) {
+    .calculator {
+        padding: 1rem;
+        width: 70vw;   /* fit almost full screen */
+    }
+
+    .display {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+
+    button {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+
+    .buttons {
+        grid-gap: 0.3rem;
+    }
+}
